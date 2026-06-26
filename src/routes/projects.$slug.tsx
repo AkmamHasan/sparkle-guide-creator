@@ -93,7 +93,8 @@ function WorkflowStrip({ steps }: { steps: string[] }) {
 }
 
 function CaseStudy() {
-  const { project } = Route.useLoaderData();
+  const data = Route.useLoaderData() as { project: Project };
+  const project = data.project;
   const { prev, next } = getNeighborProjects(project.slug);
 
   const toc = buildTOC(project);
