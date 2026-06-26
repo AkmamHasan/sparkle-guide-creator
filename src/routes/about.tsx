@@ -3,6 +3,7 @@ import { ExternalLink, Award, GraduationCap, ArrowRight } from "lucide-react";
 import { education, experience, credentials } from "@/data/portfolio";
 import { SectionHeading } from "@/components/site/Primitives";
 import { buildHead } from "@/lib/seo";
+import headshot from "@/assets/akmam-headshot.jpg.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () =>
@@ -43,22 +44,32 @@ function AboutPage() {
     <>
       <section className="bg-paper border-b border-border-light">
         <div className="container-page py-16 md:py-20">
-          <div className="eyebrow">About</div>
-          <h1 className="mt-3 font-display font-bold text-4xl md:text-5xl text-text-dark leading-tight max-w-3xl">
-            I connect technical analysis with practical communication.
-          </h1>
-          <div className="mt-6 space-y-4 max-w-3xl text-text-dark-dim leading-relaxed">
-            <p>
-              I am an Applied Artificial Intelligence MSc graduate with a Computer Science background and
-              experience across machine learning, NLP, data analytics, software experimentation, requirements
-              analysis and customer-facing operations.
-            </p>
-            <p>
-              My path has not been limited to one industry. I have worked on ESG risk analysis, cyclone
-              forecasting, cyber-physical monitoring, text classification, data reconciliation, website
-              experimentation and frontline retail operations. That range has taught me how to adapt technical
-              thinking to different problems and audiences.
-            </p>
+          <div className="grid gap-10 lg:grid-cols-[1fr_280px] items-start">
+            <div>
+              <div className="eyebrow">About</div>
+              <h1 className="mt-3 font-display font-bold text-4xl md:text-5xl text-text-dark leading-tight max-w-3xl">
+                I connect technical analysis with practical communication.
+              </h1>
+              <div className="mt-6 space-y-4 max-w-3xl text-text-dark-dim leading-relaxed">
+                <p>
+                  I am an Applied Artificial Intelligence MSc graduate with a Computer Science background and
+                  experience across machine learning, NLP, data analytics, software experimentation, requirements
+                  analysis and customer-facing operations.
+                </p>
+                <p>
+                  My path has not been limited to one industry. I have worked on ESG risk analysis, cyclone
+                  forecasting, cyber-physical monitoring, text classification, data reconciliation, website
+                  experimentation and frontline retail operations. That range has taught me how to adapt technical
+                  thinking to different problems and audiences.
+                </p>
+              </div>
+            </div>
+            <div className="relative w-full max-w-[260px] mx-auto lg:mx-0">
+              <div className="aspect-[4/5] rounded-2xl overflow-hidden border border-border-light bg-paper-2 shadow-sm">
+                <img src={headshot.url} alt="Akmam Hasan portrait" className="w-full h-full object-cover" />
+              </div>
+              <div className="absolute -z-10 -top-4 -right-4 h-32 w-32 rounded-full bg-teal/20 blur-3xl" aria-hidden />
+            </div>
           </div>
         </div>
       </section>

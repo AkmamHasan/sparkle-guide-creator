@@ -4,6 +4,7 @@ import {
   getProject, getNeighborProjects, type Project,
 } from "@/data/portfolio";
 import { ImagePlaceholder, TechnologyTag } from "@/components/site/Primitives";
+import { LenseESGVisuals } from "@/components/site/LenseESGVisuals";
 import { buildHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/projects/$slug")({
@@ -270,6 +271,12 @@ function CaseStudy() {
                 {s.bullets && <Bullets items={s.bullets} />}
               </Section>
             ))}
+
+            {project.slug === "lenseesg" && (
+              <Section id="visuals" title="Visuals and results">
+                <LenseESGVisuals />
+              </Section>
+            )}
 
             {project.imagePlaceholders && project.imagePlaceholders.length > 0 && (
               <Section id="visuals" title="Visuals and artefacts">

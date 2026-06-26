@@ -6,10 +6,12 @@ import {
   profile, metrics, projects, capabilities, experience, education, publication,
 } from "@/data/portfolio";
 import {
-  SectionHeading, MetricCard, TechnologyTag, FeaturedProjectCard, ImagePlaceholder,
+  SectionHeading, MetricCard, TechnologyTag, FeaturedProjectCard,
 } from "@/components/site/Primitives";
 import { ProcessDiagram } from "@/components/site/ProcessDiagram";
+import { CycloneChart } from "@/components/site/CycloneChart";
 import { buildHead } from "@/lib/seo";
+import headshot from "@/assets/akmam-headshot.jpg.asset.json";
 
 const personJsonLd = {
   "@context": "https://schema.org",
@@ -107,24 +109,12 @@ function HomePage() {
 
                 <div className="relative">
                   <div className="aspect-[4/5] rounded-xl border border-border-dark overflow-hidden bg-ink-3 relative">
-                    {/* Headshot fallback / placeholder */}
                     <img
-                      src={profile.headshotPath}
-                      alt="Akmam Hasan"
+                      src={headshot.url}
+                      alt="Akmam Hasan portrait"
                       className="absolute inset-0 w-full h-full object-cover"
-                      onError={(e) => {
-                        (e.currentTarget as HTMLImageElement).style.display = "none";
-                      }}
                     />
-                    <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6">
-                      <div className="h-20 w-20 rounded-full border border-teal/40 flex items-center justify-center font-display font-bold text-2xl text-teal-bright">
-                        AH
-                      </div>
-                      <div className="mt-4 eyebrow-light">Add professional headshot</div>
-                      <div className="mt-2 text-xs text-text-light-dim">
-                        Place file at <span className="font-mono">/images/akmam-hasan-headshot.jpg</span>
-                      </div>
-                    </div>
+                    <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-ink-1/80 to-transparent" aria-hidden />
                   </div>
 
                   <div className="mt-5 flex items-center justify-between">
@@ -262,7 +252,7 @@ function HomePage() {
                 </Link>
               </div>
             </div>
-            <ImagePlaceholder label="Predicted vs. observed cyclone trajectories" ratio="4/3" />
+            <CycloneChart />
           </div>
         </div>
       </section>
