@@ -272,6 +272,12 @@ function CaseStudy() {
               </Section>
             ))}
 
+            {project.slug === "lenseesg" && (
+              <Section id="visuals" title="Visuals and results">
+                <LenseESGVisuals />
+              </Section>
+            )}
+
             {project.imagePlaceholders && project.imagePlaceholders.length > 0 && (
               <Section id="visuals" title="Visuals and artefacts">
                 <div className="grid gap-4 sm:grid-cols-2">
