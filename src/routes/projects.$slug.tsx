@@ -4,6 +4,7 @@ import {
   getProject, getNeighborProjects, type Project,
 } from "@/data/portfolio";
 import { ImagePlaceholder, TechnologyTag } from "@/components/site/Primitives";
+import { LenseESGVisuals } from "@/components/site/LenseESGVisuals";
 import { buildHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/projects/$slug")({
