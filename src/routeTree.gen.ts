@@ -11,11 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ResearchRouteImport } from './routes/research'
+import { Route as IeltsshuruRouteImport } from './routes/ieltsshuru'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
+import { Route as IeltsshuruSplatRouteImport } from './routes/ieltsshuru_.$'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -25,6 +27,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const ResearchRoute = ResearchRouteImport.update({
   id: '/research',
   path: '/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IeltsshuruRoute = IeltsshuruRouteImport.update({
+  id: '/ieltsshuru',
+  path: '/ieltsshuru',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -52,13 +59,20 @@ const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
   path: '/projects/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IeltsshuruSplatRoute = IeltsshuruSplatRouteImport.update({
+  id: '/ieltsshuru_/$',
+  path: '/ieltsshuru/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/ieltsshuru': typeof IeltsshuruRoute
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/ieltsshuru/$': typeof IeltsshuruSplatRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects/': typeof ProjectsIndexRoute
 }
@@ -66,8 +80,10 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/ieltsshuru': typeof IeltsshuruRoute
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/ieltsshuru/$': typeof IeltsshuruSplatRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects': typeof ProjectsIndexRoute
 }
@@ -76,8 +92,10 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/ieltsshuru': typeof IeltsshuruRoute
   '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/ieltsshuru_/$': typeof IeltsshuruSplatRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects/': typeof ProjectsIndexRoute
 }
@@ -87,8 +105,10 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/ieltsshuru'
     | '/research'
     | '/sitemap.xml'
+    | '/ieltsshuru/$'
     | '/projects/$slug'
     | '/projects/'
   fileRoutesByTo: FileRoutesByTo
@@ -96,8 +116,10 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/ieltsshuru'
     | '/research'
     | '/sitemap.xml'
+    | '/ieltsshuru/$'
     | '/projects/$slug'
     | '/projects'
   id:
@@ -105,8 +127,10 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/contact'
+    | '/ieltsshuru'
     | '/research'
     | '/sitemap.xml'
+    | '/ieltsshuru_/$'
     | '/projects/$slug'
     | '/projects/'
   fileRoutesById: FileRoutesById
@@ -115,8 +139,10 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  IeltsshuruRoute: typeof IeltsshuruRoute
   ResearchRoute: typeof ResearchRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  IeltsshuruSplatRoute: typeof IeltsshuruSplatRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
 }
@@ -135,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/research'
       fullPath: '/research'
       preLoaderRoute: typeof ResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ieltsshuru': {
+      id: '/ieltsshuru'
+      path: '/ieltsshuru'
+      fullPath: '/ieltsshuru'
+      preLoaderRoute: typeof IeltsshuruRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -172,6 +205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ieltsshuru_/$': {
+      id: '/ieltsshuru_/$'
+      path: '/ieltsshuru/$'
+      fullPath: '/ieltsshuru/$'
+      preLoaderRoute: typeof IeltsshuruSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -179,8 +219,10 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  IeltsshuruRoute: IeltsshuruRoute,
   ResearchRoute: ResearchRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  IeltsshuruSplatRoute: IeltsshuruSplatRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
 }
